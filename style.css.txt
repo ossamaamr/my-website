@@ -1,0 +1,51 @@
+/* Custom styles for background image and better readability */
+.hero-section {
+    /* تم تحديث مسار الصورة ليتناسب مع مجلد images */
+    background-image: url('./images/background.jpg');
+    background-size: cover;
+    background-position: center;
+}
+/* Hide content initially */
+#mainContent, #searchFormContainer {
+    display: none;
+}
+/* Adjusted spacing for header links */
+.header-links a {
+    padding: 0 15px; /* Increased padding for more space */
+    white-space: nowrap; /* Prevent wrapping for links */
+}
+/* Increased spacing for social icons */
+.social-icons a {
+    margin: 0 10px; /* More margin between icons */
+}
+/* Style for the fictional audio player */
+.audio-player {
+    background-color: #f3f4f6;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+.audio-player button {
+    background-color: #3b82f6;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+.audio-player button:hover {
+    background-color: #2563eb;
+}
+
+/* Hide language dropdown by default */
+#language-dropdown {
+    display: none;
+}
+/* Show language dropdown when button is active (via JS toggle) */
+#language-dropdown.active {
+    display: block;
+}

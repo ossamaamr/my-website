@@ -1,0 +1,115 @@
+// Language Dropdown functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const menuButton = document.getElementById('menu-button');
+    const languageDropdown = document.getElementById('language-dropdown');
+
+    if (menuButton) {
+        menuButton.addEventListener('click', function(event) {
+            event.stopPropagation(); // Prevent click from bubbling to window and closing
+            languageDropdown.classList.toggle('hidden');
+        });
+    }
+
+    // Hide dropdown when clicking outside
+    window.addEventListener('click', function(event) {
+        if (!event.target.matches('#menu-button') && !event.target.closest('#language-dropdown')) {
+            if (languageDropdown && !languageDropdown.classList.contains('hidden')) {
+                languageDropdown.classList.add('hidden');
+            }
+        }
+    });
+
+    // Placeholder for language switching (requires more complex JS for full functionality)
+    const langAr = document.getElementById('lang-ar');
+    const langEn = document.getElementById('lang-en');
+    const langUr = document.getElementById('lang-ur');
+
+    if (langAr) langAr.addEventListener('click', () => alert('تم تغيير اللغة إلى العربية (واجهة فقط).'));
+    if (langEn) langEn.addEventListener('click', () => alert('Language changed to English (UI only).'));
+    if (langUr) langUr.addEventListener('click', () => alert('زبان اردو میں تبدیل ہو گئی (صرف UI).'));
+});
+
+
+// Function to show login form
+function showLoginForm() {
+    document.getElementById('loginForm').classList.remove('hidden');
+    document.getElementById('registerForm').classList.add('hidden');
+    document.getElementById('mainContent').style.display = 'none';
+    document.getElementById('authPage').style.display = 'flex';
+}
+
+// Function to show register form
+function showRegisterForm() {
+    document.getElementById('loginForm').classList.add('hidden');
+    document.getElementById('registerForm').classList.remove('hidden');
+    document.getElementById('mainContent').style.display = 'none';
+    document.getElementById('authPage').style.display = 'flex';
+}
+
+// Handle Login
+function handleLogin(event) {
+    event.preventDefault();
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+
+    // In a real application, you'd send these to a backend for authentication
+    if (email && password) {
+        alert('تم تسجيل الدخول بنجاح! (هذا مجرد مثال)');
+        document.getElementById('authPage').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'block';
+    } else {
+        alert('الرجاء إدخال البريد الإلكتروني وكلمة المرور.');
+    }
+}
+
+// Handle Register
+function handleRegister(event) {
+    event.preventDefault();
+    const email = document.getElementById('registerEmail').value;
+    const password = document.getElementById('registerPassword').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+
+    if (password !== confirmPassword) {
+        alert('كلمة المرور وتأكيد كلمة المرور غير متطابقين.');
+        return;
+    }
+
+    // In a real application, you'd send these to a backend for user creation
+    if (email && password) {
+        alert('تم إنشاء الحساب بنجاح! (هذا مجرد مثال)');
+        document.getElementById('authPage').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'block';
+    } else {
+        alert('الرجاء إدخال البريد الإلكتروني وكلمة المرور.');
+    }
+}
+
+// Handle Logout
+function handleLogout() {
+    alert('تم تسجيل الخروج.');
+    showLoginForm(); // Redirects to the login form
+}
+
+// Handle Search Form Submission
+document.getElementById('searchForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const fromLocation = document.getElementById('from').value;
+    const toLocation = document.getElementById('to').value;
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('time').value;
+    const passengers = document.getElementById('passengers').value;
+    const tripType = document.getElementById('tripType').value;
+
+    alert(`جارٍ البحث عن رحلة:\nمن: ${fromLocation}\nإلى: ${toLocation}\nالتاريخ: ${date}\nالوقت: ${time}\nعدد الركاب: ${passengers}\nنوع الرحلة: ${tripType}`);
+    // هنا يمكنك توجيه المستخدم إلى صفحة نتائج البحث أو إجراء طلب API
+});
+
+// Set current year in footer
+document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+// Initially hide main content and show auth page
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('mainContent').style.display = 'none';
+    document.getElementById('authPage').style.display = 'flex';
+});
